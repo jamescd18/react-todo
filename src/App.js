@@ -17,7 +17,7 @@ function App() {
       <Form inputText={ inputText } setInputText={ setInputText } 
             toDos={ toDos } setToDos={ setToDos }
             latestId={ latestId } setLatestId={ setLatestId } />
-      <ToDoList inputText={ inputText } />
+      <ToDoList toDos={ toDos } setToDos={ setToDos } />
     </div>
   );
 }

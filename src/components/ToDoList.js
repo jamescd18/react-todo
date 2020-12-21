@@ -1,11 +1,11 @@
 import React from 'react';
 import ToDo from './ToDo';
 
-const ToDoList = ({ inputText }) => {
+const ToDoList = ({ toDos, setToDos }) => {
     return (
         <div className="todo-container">
             <ul className="todo-list">
-                <ToDo />
+                { toDos.map(toDo => <ToDo id={ toDo.id } text={ toDo.text } done={ toDo.done } />) }
             </ul>
         </div>
     );
