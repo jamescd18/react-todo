@@ -1,13 +1,25 @@
 import React from 'react';
 
-const Form = ({ setInputText }) => {
+const Form = ({ inputText, setInputText, toDos, setToDos, latestId, setLatestId }) => {
+    
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
     };
+
+    const submitToDoHandler = (e) => {
+        e.preventDefault();
+        setToDos([
+            ...toDos, { id: latestId, text: inputText, done: false }
+        ]);
+
+        setInputText('');
+        setLatestId(latestId + 1);
+    };
+
     return (
         <form>
-            <input onChange={ inputTextHandler } type="text" className="todo-input" />
-            <button className="todo-button" type="submit">
+            <input value={ inputText } onChange={ inputTextHandler } type="text" className="todo-input" />
+            <button onClick={ submitToDoHandler } className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
