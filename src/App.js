@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form';
 import ToDoList from './components/ToDoList';
@@ -9,6 +9,32 @@ function App() {
   const [ inputText, setInputText ] = useState('');
   const [ toDos, setToDos ] = useState([]);
   const [ filter, setFilter ] = useState('all');
+
+  // only runs once when app reloaded
+  useEffect(() => {
+    getLocal();
+  }, []);
+
+  // runs whenever toDos state object is updated
+  useEffect(() => {
+    saveToLocal();
+  }, [toDos]);
+
+  const saveToLocal = () => {
+    if (localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      localStorage.setItem('todos', JSON.stringify(toDos));
+    }
+  };
+
+  const getLocal = () => {
+    if (localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      setToDos(JSON.parse(localStorage.getItem('todos')));
+    }
+  };
 
   return (
     <div className="App">
