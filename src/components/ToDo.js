@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToDo = ({ id, text, done }) => {
+const ToDo = ({ text, done }) => {
     return (
         <div className="todo">
             <li className="todo-item">{ text }</li>
