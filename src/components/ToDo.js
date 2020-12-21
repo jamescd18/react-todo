@@ -19,8 +19,8 @@ const ToDo = ({ toDo, toDos, setToDos }) => {
     };
 
     return (
-        <div className="todo">
-            <li className="todo-item">
+        <div id={`toDo-${ toDo.id }`} className="todo">
+            <li className={`todo-item ${ toDo.done ? "completed" : ""}`}>
                 { toDo.text }
                 </li>
             <button onClick={doneHandler} className="complete-btn">
