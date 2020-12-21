@@ -8,6 +8,7 @@ function App() {
   const [ latestId, setLatestId ] = useState(0);
   const [ inputText, setInputText ] = useState('');
   const [ toDos, setToDos ] = useState([]);
+  const [ filter, setFilter ] = useState('all');
 
   return (
     <div className="App">
@@ -16,8 +17,10 @@ function App() {
       </header>
       <Form inputText={ inputText } setInputText={ setInputText } 
             toDos={ toDos } setToDos={ setToDos }
-            latestId={ latestId } setLatestId={ setLatestId } />
-      <ToDoList toDos={ toDos } setToDos={ setToDos } />
+            latestId={ latestId } setLatestId={ setLatestId }
+            filter={ filter } setFilter={ setFilter } />
+      <ToDoList toDos={ toDos } setToDos={ setToDos }
+                filter={ filter } setFilter={ setFilter } />
     </div>
   );
 }
