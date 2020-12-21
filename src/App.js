@@ -1,5 +1,6 @@
 import './App.css';
 import Form from './components/Form';
+import ToDoList from './components/ToDoList';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <h1>James' To Do List</h1>
       </header>
       <Form />
+      <ToDoList />
     </div>
   );
 }
