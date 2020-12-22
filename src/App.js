@@ -21,18 +21,16 @@ function App() {
   }, [toDos]);
 
   const saveToLocal = () => {
-    if (localStorage.getItem('todos') === null) {
-      localStorage.setItem('todos', JSON.stringify([]));
-    } else {
-      localStorage.setItem('todos', JSON.stringify(toDos));
-    }
+    localStorage.setItem('todos', JSON.stringify(toDos));
   };
 
   const getLocal = () => {
-    if (localStorage.getItem('todos') === null) {
+    const localList = JSON.parse(localStorage.getItem('todos'));
+    if (localList === null || localList === [] || localList.length === 0) {
       localStorage.setItem('todos', JSON.stringify([]));
     } else {
-      setToDos(JSON.parse(localStorage.getItem('todos')));
+      setToDos(localList);
+      setLatestId(Math.max(...localList.map(ele => ele.id)) + 1);
     }
   };
 
